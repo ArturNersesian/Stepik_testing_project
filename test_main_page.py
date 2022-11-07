@@ -12,4 +12,8 @@ def test_add_to_busket_buton_exists(browser):
 
     assert browser.find_element(By.CSS_SELECTOR, ".btn-add-to-basket"), "Кнопка добавления в корзину не найдена"
 
-
+def test_guest_can_go_to_login_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/"
+    browser.get(link)
+    login_link = browser.find_element(By.CSS_SELECTOR, "#login_link")
+    login_link.click()
