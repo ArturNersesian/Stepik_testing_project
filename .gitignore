@@ -1,2 +1,4 @@
 chromedriver.exe
 __init__.py
+/__pycache__
+/.pytest_cache
