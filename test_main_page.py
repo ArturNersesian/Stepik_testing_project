@@ -8,15 +8,33 @@ from selenium.webdriver.support import expected_conditions as EC
 
 def test_guest_can_go_to_login_page(browser):
     link = "http://selenium1py.pythonanywhere.com/"
-    page = MainPage(browser, link)   # инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес
-    page.open()                      # открываем страницу
-    login_page = page.go_to_login_page()  # выполняем метод страницы — переходим на страницу логина
-    login_page.should_be_login_page()   # проверяем, методом should_be_login_page, что страница имеет формы чтобы залогиниться либо зарегистрироваться
-
+    # инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес
+    page = MainPage(browser, link)
+    # открываем страницу
+    page.open()
+    # переходим на страницу логина
+    page.go_to_login_page()
+    # берем текущий url
+    link = browser.current_url
+    # создаем объект
+    login_page = LoginPage(browser, link)
+    # проверяем, что страница загрузилась
+    login_page.should_be_login_page()
 def test_guest_should_see_login_link(browser):
     link = "http://selenium1py.pythonanywhere.com/"
     page = MainPage(browser, link)
+    # открываем страницу товара
     page.open()
-    page.go_to_login_page()
-    login_page = LoginPage(browser, browser.current_url)
-    login_page.should_be_login_page()
+      # проверяем что есть ссылка на логин
+    page.should_be_login_link()
+def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/"
+    page = MainPage(browser, link)
+    # открываем страницу товара
+    page.open()
+    # открываем корзину
+    page.view_basket()
+    # Ожидаем, что в корзине нет товаров
+    page.check_no_products_in_basket()
+    # # Ожидаем, что есть текст о том, что корзина пуста
+    page.should_be_text_about_empty_basket()

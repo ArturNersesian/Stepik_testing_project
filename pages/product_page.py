@@ -48,3 +48,17 @@ class ProductPage(BasePage):
     def should_disappear_success_message(self):
         assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
             "Success message is presented, but should not be"
+
+    def view_basket(self):
+        login_link = self.browser.find_element(*ProductPageLocators.VIEW_BASKET_BUTTON)
+        login_link.click()
+
+    def check_no_products_in_basket(self):
+        assert self.is_not_element_present(*ProductPageLocators.LIST_OF_PRODUCTS_IN_BASKET), \
+            "List of products exists, but shouldn't be"
+
+    def should_be_text_about_empty_basket(self):
+        # assert self.is_element_present(*ProductPageLocators.EMPTY_BASKET_MESSAGE)
+        text = self.browser.find_element(*ProductPageLocators.EMPTY_BASKET_MESSAGE).text
+        print(f"MESSAGE IN EMPTY BASKET: {text}")
+        assert text == "Your basket is empty. Continue shopping", "No text about empty basket"

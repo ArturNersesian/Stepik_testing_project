@@ -8,6 +8,7 @@ import math
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium import webdriver
+from Stepik_testing_project.pages.locators import BasePageLocators
 
 
 class BasePage():
@@ -19,6 +20,13 @@ class BasePage():
     def open(self):
         self.browser.get(self.url)
     # Проверяет присутствует ли элемент на странице (возвращает True или False)
+    def go_to_login_page(self):
+        link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+        link.click()
+
+    def should_be_login_link(self):
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+
     def is_element_present(self, how, what):
         try:
             self.browser.find_element(how, what)
