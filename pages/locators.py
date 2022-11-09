@@ -5,6 +5,7 @@ class MainPageLocators():
     BASKET_BUTTON = (By.CSS_SELECTOR, "span a.btn.btn-default")
     EMPTY_BASKET_MESSAGE = (By.CSS_SELECTOR, "#content_inner p")
     LIST_OF_PRODUCTS_IN_BASKET = (By.CSS_SELECTOR, ".col-sm-4")
+    VIEW_BASKET_BUTTON = (By.CSS_SELECTOR, "span a.btn.btn-default")
 
 class LoginPageLocators():
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
@@ -19,8 +20,11 @@ class ProductPageLocators():
     PRICE_OF_PRODUCT_IN_BASKET = (By.CSS_SELECTOR, "#messages :nth-child(3) div strong")
     SUCCESS_MESSAGE = (By.CSS_SELECTOR, "#messages :nth-child(3) div strong")
     VIEW_BASKET_BUTTON = (By.CSS_SELECTOR, "span a.btn.btn-default")
-    EMPTY_BASKET_MESSAGE = (By.CSS_SELECTOR, "#content_inner p")
+    # EMPTY_BASKET_MESSAGE = (By.CSS_SELECTOR, "#content_inner p")
+    # LIST_OF_PRODUCTS_IN_BASKET = (By.CSS_SELECTOR, ".col-sm-4")
+class BasketPageLocators():
     LIST_OF_PRODUCTS_IN_BASKET = (By.CSS_SELECTOR, ".col-sm-4")
+    EMPTY_BASKET_MESSAGE = (By.CSS_SELECTOR, "#content_inner p")
 
 class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")

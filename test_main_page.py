@@ -1,6 +1,7 @@
 import time
 from .pages.main_page import MainPage
 from .pages.login_page import LoginPage
+from .pages.basket_page import BasketPage
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -33,8 +34,11 @@ def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
     # открываем страницу товара
     page.open()
     # открываем корзину
-    page.view_basket()
+    # page.view_basket()
+    page.go_to_basket_page()
     # Ожидаем, что в корзине нет товаров
-    page.check_no_products_in_basket()
+    basket_page = BasketPage(browser,browser.current_url)
+    # проверяем, что перешли на страницу корзины
+    basket_page.should_be_basket_page()
     # # Ожидаем, что есть текст о том, что корзина пуста
-    page.should_be_text_about_empty_basket()
+    basket_page.should_be_text_about_empty_basket()

@@ -9,8 +9,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium import webdriver
 from Stepik_testing_project.pages.locators import BasePageLocators
-
-
+from Stepik_testing_project.pages.locators import ProductPageLocators
+from Stepik_testing_project.pages.locators import MainPageLocators
 class BasePage():
     def __init__(self, browser, url,timeout=10):
         self.browser = browser
@@ -62,5 +62,8 @@ class BasePage():
                 until_not(EC.presence_of_element_located((how, what)))
         except TimeoutException:
             return False
-
         return True
+
+    def go_to_basket_page(self):
+        login_link = self.browser.find_element(*MainPageLocators.VIEW_BASKET_BUTTON)
+        login_link.click()
