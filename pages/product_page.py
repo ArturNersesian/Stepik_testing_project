@@ -9,7 +9,6 @@ from .locators import ProductPageLocators
 
 class ProductPage(BasePage):
 
-
     def add_product_to_basket(self):
         login_link = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET)
         login_link.click()
@@ -49,6 +48,8 @@ class ProductPage(BasePage):
         assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
             "Success message is presented, but should not be"
 
+
+
     def view_basket(self):
         login_link = self.browser.find_element(*ProductPageLocators.VIEW_BASKET_BUTTON)
         login_link.click()
@@ -62,3 +63,5 @@ class ProductPage(BasePage):
         text = self.browser.find_element(*ProductPageLocators.EMPTY_BASKET_MESSAGE).text
         print(f"MESSAGE IN EMPTY BASKET: {text}")
         assert text == "Your basket is empty. Continue shopping", "No text about empty basket"
+
+

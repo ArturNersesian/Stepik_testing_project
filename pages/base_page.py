@@ -19,6 +19,7 @@ class BasePage():
     # открывает страницу переданную в url
     def open(self):
         self.browser.get(self.url)
+
     # Проверяет присутствует ли элемент на странице (возвращает True или False)
     def go_to_login_page(self):
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
@@ -67,3 +68,14 @@ class BasePage():
     def go_to_basket_page(self):
         login_link = self.browser.find_element(*MainPageLocators.VIEW_BASKET_BUTTON)
         login_link.click()
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                     " probably unauthorised user"
+
+    def authorize_user(self, email, password):
+        email_input = self.browser.find_element(By.CSS_SELECTOR, '[type="email"][name="login-username"]')
+        email_input.send_keys(email)
+
+        pass_input = self.browser.find_element(By.CSS_SELECTOR, '[type="password"][name="login-password"]')
+        pass_input.send_keys(password)
