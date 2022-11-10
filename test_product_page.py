@@ -39,7 +39,7 @@ def test_guest_can_add_product_to_basket(browser, link):
     page.solve_quiz_and_get_code()
     page.view_basket()
     # проверяем, что цена и название товара на странице товара совпадают с ценой товара и его названием после добавления в корзину
-    # page.product_with_correct_name_and_price_should_be_added(name_of_product_at_product_page,price_of_product_at_product_page)
+    page.product_with_correct_name_and_price_should_be_aded(name_of_product_at_product_page,price_of_product_at_product_page)
 
 @pytest.mark.xfail
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):

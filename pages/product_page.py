@@ -21,14 +21,25 @@ class ProductPage(BasePage):
         name_in_basket = self.browser.find_element(*ProductPageLocators.NAME_OF_PRODUCT_IN_BASKET).text
         print(f"NAME ===== {name_in_basket}")
         assert name_at_product_page in name_in_basket, "Name is not same"
-        # assert "The shellcoder's handbook" in name_in_basket, "Login form is not presented"
 
     def should_have_rigth_price(self,price_at_product_page):
         price_in_basket = self.browser.find_element(*ProductPageLocators.PRICE_OF_PRODUCT_IN_BASKET).text
         print(f"PRICE ===== {price_in_basket}")
         assert price_at_product_page in price_in_basket, "Name is not same"
-        # assert "9.99" in price_in_basket, "Login form is not presented"
 
+    def product_with_correct_name_and_price_should_be_aded(self, name_at_product_page, price_at_product_page):
+            self.should_have_right_nam(name_at_product_page)
+            self.should_have_rigth_pric(price_at_product_page)
+
+    def should_have_right_nam(self, name_at_product_page):
+        name_in_basket = self.browser.find_element(*ProductPageLocators.NAM_OF_PRODUCT_IN_BASKET).text
+        print(f"NAME ===== {name_in_basket}")
+        assert name_at_product_page in name_in_basket, "Name is not same"
+
+    def should_have_rigth_pric(self, price_at_product_page):
+        price_in_basket = self.browser.find_element(*ProductPageLocators.PRIC_OF_PRODUCT_IN_BASKET).text
+        print(f"PRICE ===== {price_in_basket}")
+        assert price_at_product_page in price_in_basket, "Name is not same"
     def get_name_of_product(self):
         name = self.browser.find_element(*ProductPageLocators.NAME_OF_PRODUCT).text
         print(f"URL: {self.browser.current_url}")

@@ -19,8 +19,8 @@ class ProductPageLocators():
 
     NAME_OF_PRODUCT_IN_BASKET = (By.CSS_SELECTOR, "#messages :first-child div strong")
     PRICE_OF_PRODUCT_IN_BASKET = (By.CSS_SELECTOR, "#messages :nth-child(3) div strong")
-    # NAME_OF_PRODUCT_IN_BASKET = (By.CSS_SELECTOR, ".col-sm-4 h3 a")
-    # PRICE_OF_PRODUCT_IN_BASKET = (By.CSS_SELECTOR, ".col-sm-1 p")
+    NAM_OF_PRODUCT_IN_BASKET = (By.CSS_SELECTOR, ".col-sm-4 h3 a")
+    PRIC_OF_PRODUCT_IN_BASKET = (By.CSS_SELECTOR, ".col-sm-1 p")
 
     SUCCESS_MESSAGE = (By.CSS_SELECTOR, "#messages :nth-child(3) div strong")
     VIEW_BASKET_BUTTON = (By.CSS_SELECTOR, "span a.btn.btn-default")
